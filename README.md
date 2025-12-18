@@ -35,10 +35,11 @@ This project was developed with a strong focus on **code organization**, **separ
 
 ---
 
-## 📁 Project Structure
+## 📁 Folders Structure
 
 The project is organized in a modular way, with each part having a clear responsibility:
-countdown
+```text
+countdown-timer
 ├── logic
 │ ├── controller
 │ │ ├── chronometerController.js
@@ -62,7 +63,7 @@ countdown
 ├── index.js
 ├── index.html
 └── style.css
-
+```
 ---
 
 ## 🧠 What I Learned
