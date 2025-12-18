@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+    <title>Cronômetro e CountDown</title>
+  </head>
+
+  <body class="container-fluid">
+    <!-- home -->
+    <section
+      id="screen-home"
+      class="home active d-flex flex-column justify-content-center align-items-center"
+    >
+      <div
+        id="card-home"
+        class="bg-light rounded-3 shadow m-auto overflow-hidden d-flex flex-column justify-content-between align-items-stretch"
+      >
+        <div id="title-home" class="w-100 p-3 text-center">
+          <i class="bi bi-stopwatch font-big"></i>
+          <h1 class="text text-bold">Home</h1>
+          <h2 class="text">Escolha uma opção:</h2>
+        </div>
+        <div
+          id="buttons-home"
+          class="bg-primary-custom d-flex flex-column justify-content-center align-items-center gap-4"
+        >
+          <!-- buttons -->
+          <button
+            data-navigation="screen-chronometer"
+            type="button"
+            class="bg-accent border-0 rounded-pill py-2 px-5 shadow text-bold text"
+          >
+            Cronômetro
+          </button>
+          <button
+            data-navigation="screen-countdown-1"
+            type="button"
+            class="bg-accent border-0 rounded-pill py-2 px-5 shadow text-bold text"
+          >
+            CountDown
+          </button>
+        </div>
+        <div id="card-footer" class="bg-light w-100 text-center py-1">
+          <i class="bi bi-c-circle"></i>
+          <span> writen by Emanuel </span>
+        </div>
+      </div>
+    </section>
+
+    <!-- chronometer -->
+    <section
+      id="screen-chronometer"
+      class="timerScreen flex-column justify-content-center gap-3 align-items-center"
+    >
+      <div
+        id="card-chronometer"
+        class="bg-primary-custom rounded-3 shadow m-auto overflow-hidden d-flex flex-column justify-content-between align-items-stretch text-center"
+      >
+        <div class="bg-light py-3">
+          <h2 class="text font-big">Cronômetro</h2>
+        </div>
+
+        <!-- display chronometer -->
+        <div
+          id="display-chronometer"
+          class="screen text font-display bg-primary-custom text-light d-flex flex-column justify-content-center"
+        >
+          00:00:00:00
+        </div>
+
+        <!-- buttons -->
+        <div
+          id="buttons-chronometer"
+          class="bg-light py-3 py-lg-4 d-flex justify-content-center align-items-center gap-3 gap-md-5"
+        >
+          <button
+            data-logic="chronometer:start"
+            type="button"
+            class="bg-accent border-0 rounded-pill py-2 px-4 shadow text-bold text"
+          >
+            <i class="bi bi-caret-right-fill d-block d-md-none"></i>
+            <span class="d-none d-md-block">Iniciar</span>
+          </button>
+          <button
+            data-logic="chronometer:pause"
+            type="button"
+            class="bg-accent border-0 rounded-pill py-2 px-4 shadow text-bold text"
+          >
+            <i class="bi bi-pause-circle-fill d-block d-md-none"></i>
+            <span class="d-none d-md-block">Pausar</span>
+          </button>
+          <button
+            data-logic="chronometer:cancel"
+            type="button"
+            class="bg-accent border-0 rounded-pill py-2 px-4 shadow text-bold text"
+          >
+            <i class="bi bi-backspace-fill d-block d-md-none"></i>
+            <span class="d-none d-md-block">Cancelar</span>
+          </button>
+          <button
+            data-logic="chronometer:restart"
+            type="button"
+            class="bg-accent border-0 rounded-pill py-2 px-4 shadow text-bold text"
+          >
+            <i class="bi bi-skip-backward-circle-fill d-block d-md-none"></i>
+            <span class="d-none d-md-block">Reiniciar</span>
+          </button>
+          <button
+            data-logic="chronometer:toHome"
+            data-navigation="screen-home"
+            type="button"
+            class="bg-accent border-0 rounded-pill py-2 px-4 shadow text-bold text"
+          >
+            <i class="bi bi-house-fill d-block d-md-none"></i>
+            <span class="d-none d-md-block">Home</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- countdown step 1 -->
+    <section
+      id="screen-countdown-1"
+      class="first-step flex-column justify-content-center gap-3 align-items-center"
+    >
+      <div
+        id="card-countdown-1"
+        class="rounded-3 shadow m-auto overflow-hidden d-flex flex-column justify-content-between align-items-stretch text-center"
+      >
+        <div class="bg-light py-3">
+          <h2 class="text font-big">CountDown</h2>
+        </div>
+
+        <!-- inputs -->
+        <div
+          id="inputs-countdown"
+          class="bg-primary-custom text-light d-flex flex-column justify-content-center align-items-center gap-4"
+        >
+          <label class="w-75">
+            <input type="radio" name="mode" value="date" id="mode-date" />
+            Contar até uma data
+          </label>
+          <label class="w-75">
+            <input type="radio" name="mode" value="minutes" id="mode-minutes" />
+            Contar minutos
+          </label>
+          <input
+            class="w-75"
+            type="datetime-local"
+            name="datetime-local"
+            id="countdown-date"
+            disabled
+          />
+          <input
+            class="w-75"
+            type="minutes"
+            name="minutes"
+            id="countdown-minutes"
+            disabled
+          />
+        </div>
+
+        <!-- buttons -->
+        <div
+          class="bg-light py-3 d-flex justify-content-center align-items-center gap-3 gap-md-5"
+        >
+          <button
+            data-navigation="screen-home"
+            type="button"
+            class="bg-accent border-0 rounded-pill py-2 px-5 shadow text-bold text"
+          >
+            <i class="bi bi-house-fill d-block d-md-none"></i>
+            <span class="d-none d-md-block">Home</span>
+          </button>
+          <button
+            data-logic="countdown:start"
+            data-navigation="screen-countdown-2"
+            type="button"
+            class="bg-accent border-0 rounded-pill py-2 px-5 shadow text-bold text"
+          >
+            <i class="bi bi-caret-right-fill d-block d-md-none"></i>
+            <span class="d-none d-md-block">Iniciar</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- countdown step 2 -->
+    <section
+      id="screen-countdown-2"
+      class="second-step flex-column justify-content-center gap-3 align-items-center"
+    >
+      <div
+        id="card-countdown"
+        class="bg-primary-custom rounded-3 shadow m-auto overflow-hidden d-flex flex-column justify-content-between align-items-stretch text-center"
+      >
+        <div class="bg-light py-3">
+          <h2 class="text font-big">CountDown</h2>
+        </div>
+
+        <!-- display countdown -->
+        <div
+          class="screen text font-display bg-primary-custom text-light d-flex flex-column justify-content-center"
+          id="display-countdown"
+        >
+          00:00:00
+        </div>
+
+        <!-- buttons -->
+        <div
+          id="buttons-countdown"
+          class="bg-light py-3 d-flex justify-content-center align-items-center gap-3 gap-md-5"
+        >
+          <button
+            data-logic="countdown:pause"
+            type="button"
+            class="bg-accent border-0 rounded-pill py-2 px-4 shadow text-bold text"
+          >
+            <i class="bi bi-pause-circle-fill d-block d-md-none"></i>
+            <span class="d-none d-md-block">Pausar</span>
+          </button>
+          <button
+            data-logic="countdown:continue"
+            type="button"
+            class="bg-accent border-0 rounded-pill py-2 px-4 shadow text-bold text"
+          >
+            <i class="bi bi-caret-right-fill d-block d-md-none"></i>
+            <span class="d-none d-md-block">Continuar</span>
+          </button>
+          <button
+            data-logic="countdown:cancel"
+            data-navigation="screen-countdown-1"
+            type="button"
+            class="bg-accent border-0 rounded-pill py-2 px-4 shadow text-bold text"
+          >
+            <i class="bi bi-backspace-fill d-block d-md-none"></i>
+            <span class="d-none d-md-block">Voltar</span>
+          </button>
+          <button
+            data-logic="countdown:toHome"
+            data-navigation="screen-home"
+            type="button"
+            class="bg-accent border-0 rounded-pill py-2 px-4 shadow text-bold text"
+          >
+            <i class="bi bi-house-fill d-block d-md-none"></i>
+            <span class="d-none d-md-block">Home</span>
+          </button>
+        </div>
+      </div>
+    </section>
+  </body>
+
+  <script type="module" src="index.js"></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+    crossorigin="anonymous"
+  ></script>
+</html>

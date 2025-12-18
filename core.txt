@@ -1,0 +1,101 @@
+Countdown e Cronômetro - projeto 2.0
+
+1 - Qual o objetivo do projeto?
+	Ele deve contar o tempo descendente ou ascendente
+	O usuário pode marcar o tempo no cronômetro ou saber o tempo que falta passar até o momento final escolhido por ele
+
+2 - Funcionalidades mínimas?
+	Contar o intervalo do tempo entre o momento final e o atual
+	Poder escolher o tempo final
+	Poder escolher um tempo fixo até o final do contador
+	Poder pausar, cancelar ou reiniciar a contagem
+	O cronômetro pode contar o tempo infinitamente, pausar, cancelar ou reiniciar a contagem
+
+3 - Telas e estados
+	Estados: contando, pausado
+	Telas: tela inicial com uma imagem representativa e as duas possibilidades, countdown ou cronômetro
+		   tela relacionada a cada função com seus respectivos botões e opções
+
+4 - Botões e comportamentos
+	Botão inicial, botões para selecionar cada função
+	Botões para iniciar, pausar, cancelar e reiniciar a contagem
+	Botão para voltar ao inicio
+
+5 - Fluxo ideal
+	O usuário entra no programa e escolhe o cronômetro
+		Ele inicia a contagem e o tempo atualiza
+			Se ele pausar o tempo para mas pode continuar
+			Se ele cancelar o tempo para e zera de novo
+			Se ele reiniciar faz o caminho anterior mas já inicia automaticamente
+		Ele pode voltar a tela inicial
+	O usuário entra no programa e escolhe o countdown
+		Ele escolhe uma data fixa no futuro ou ele escolhe um tempo específico em minutos para a contagem e ela se inicia
+			Se ele pausar, o tempo para na tela, mas continua girando em segundo plano, quando ele continuar atualiza automaticamente
+			Se ele cancelar volta no inicio e reseta o input			
+		Ele pode voltar a tela inicial
+6 - Organização dos arquivos
+	countdown
+		logic
+			controller
+				chronometerController.js
+				countdownController.js
+				logicController.js
+			display
+				handleRadioInputs.js
+				navigation.js
+				updateScreen.js
+			engine
+				chronometer.js
+				coutndown.js
+				mainEngine.js
+			events
+				events.js
+			formaters
+				dateFormaters.js
+				textFormaters.js
+			state
+				state.js
+		index.js
+		index.html
+		style.css
+7 - Visual 
+	Minimalista com BootStrap
+8 - Extras futuros
+	Mostrar um relógio grande na tela, digital ou analógico
+	Ver o histórico armazenado na memória
+	Escolher temas de cores
+
+
+9 - Fluxo final do projeto
+O projeto é carregado no navegador
+São chamadas as funções base do funcionamento:
+	A que localiza os botões e adiciona os eventos neles
+	A que inicia o funcionamento do motor dos cálculos (sem peso na memória)
+	A que faz a lógica da escolha das opções para o countdown
+Na tela inicial o usuário tem 2 opções, o cronômetro ou countdown:
+	O usuário clica no botão escolhido, esse botão aciona a função inicial do fluxo.
+	Essa função usa os data-attributes do botão para decidir se ele é um botão de navegação ou de lógica.	
+		Se for um botão de navegação, só faz a navegação entre telas baseado nesse comando vindo do data-attributes
+		Se for para lógica, chama a função que controla o fluxo daqui para frente, baseado no comando vindo do data-attributes
+A função do controlador do fluxo geral:
+	Essa função apenas pega o comando do botão, define o modo e a ação e com base nisso direciona para o controlador específico de cada funcionalidade
+A função do controlador do cronômetro:
+	Essa função muda o estado global do modo para cronômetro, depois, usando a ação recebida como argumento para iniciar, pausar, cancelar, ou reiniciar o cronômetro.
+	Iniciar: somente atualiza o estado global para running: true		
+	Pausar: somente atualiza o estado global para running: false		
+	Cancelar: pausa e zera o estado global que armazena os valores
+	Reiniciar: zera o estado global que armazena os valores e inicia novamente a contagem
+A função do controlador do countdown:
+	Faz a mesma coisa do anterior com pequenas diferenças:
+		Antes de iniciar, chama a função que formata os valores recebidos os inputs para um valor em milisegundos
+		Não existe a função reiniciar
+O motor do sistema:
+	O motor funciona sempre depois de carregar a página, mas não faz nada.
+	Ele é ativado somente quando o estado global está como running: true
+	Depois segundo o modo ele chama a função que atualiza o cronômetro ou countdown
+Os motores específicos:
+	A única coisa que cada um faz é adicionar ou subtrair 100ms dos seus respectivos valores globais: elipsedTime para o cronômetro e countdownRemaining para o countdown
+Por fim, no final da função do motor, chama a função para atualizar a tela
+A função que atualiza a tela:
+	Essa função testa qual modo está ativo, formata os valores base desse modo, de milisegundos, para o formato que vai ser mostrado na tela.
+Fim do fluxo.

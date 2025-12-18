@@ -1,0 +1,125 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --color-primary: #0a4040;
+  --color-primary-light: #0a4f4f;
+
+  --color-light: #f2ebdc;
+  --color-text: #0d0d0d;
+  --color-text-accent: var(--color-light);
+
+  --color-accent: #d97925;
+
+  --grad-main: linear-gradient(
+    45deg,
+    var(--color-primary),
+    var(--color-primary-light)
+  );
+
+  --border-soft: 1px solid var(--color-text);
+  --border-radius: 10px;
+  --box-shadow: 5px 5px 5px #0d0d0d55;
+}
+
+.bg-primary-custom {
+  background: var(--grad-main);
+}
+
+.bg-light {
+  background: var(--color-light);
+}
+
+.bg-accent {
+  background: var(--color-accent);
+}
+
+.text-light {
+  color: var(--color-light);
+}
+
+.text {
+  color: var(--color-text);
+}
+
+.font-big {
+  font-size: 3em;
+}
+
+.font-display {
+  font-size: 5em;
+}
+
+.text-bold {
+  font-weight: 700;
+}
+
+body {
+  background: #eae6df;
+  overflow: hidden;
+}
+
+section {
+  height: 100vh;
+  width: 100vw;
+  transition: opacity 0.25s ease-in-out;
+}
+
+.fade-in {
+  opacity: 1 !important;
+}
+
+.fade-out {
+  opacity: 0 !important;
+  pointer-events: none;
+}
+
+button i, button span {
+  pointer-events: none;
+}
+
+h2 {
+  font-size: 1.5em;
+}
+
+div#card-home,
+div#card-countdown-1 {
+  width: 90%;
+  max-width: 410px;
+}
+
+div#card-chronometer,
+div#card-countdown {
+  width: 90%;
+  max-width: 850px;
+}
+
+div#buttons-home,
+div#display-chronometer,
+div#inputs-countdown {
+  height: 40vh;
+}
+
+div#card-footer,
+div#buttons-chronometer,
+div#buttons-countdown {
+  border-bottom: solid 1em var(--color-primary);
+}
+
+div#display-chronometer,
+div#display-countdown {
+  height: 50vh;
+}
+
+button:active {
+  transform: scale(0.9);
+}
+
+@media screen and (max-width: 500px) {
+  .font-display {
+    font-size: 4em;
+  }
+}
