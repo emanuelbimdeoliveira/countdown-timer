@@ -77,7 +77,8 @@ section {
   pointer-events: none;
 }
 
-button i, button span {
+button i,
+button span {
   pointer-events: none;
 }
 
@@ -121,5 +122,15 @@ button:active {
 @media screen and (max-width: 500px) {
   .font-display {
     font-size: 4em;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  div#card-home,
+  div#card-countdown-1,
+  div#card-chronometer,
+  div#card-countdown {
+    width: 100%;
+    border-radius: 0 !important;
   }
 }
